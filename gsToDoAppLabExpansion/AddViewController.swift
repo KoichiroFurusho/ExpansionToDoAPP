@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class AddViewController: UIViewController {
 
@@ -47,11 +48,14 @@ class AddViewController: UIViewController {
         }
         if title.isEmpty{
             print("titleが空だぞ")
+            HUD.flash(.labeledError(title: nil, subtitle: "タイトルが入力されていません！！"), delay: 1)
             return
         }
         let task = Task(title: title, memo: memoTextView.text)
         tasks.append(task)
         UserDefaultsRepository.saveToUserDefaults(tasks)
+        HUD.flash(.success, delay: 0.3)
+        
         navigationController?.popViewController(animated: true)
     }
     

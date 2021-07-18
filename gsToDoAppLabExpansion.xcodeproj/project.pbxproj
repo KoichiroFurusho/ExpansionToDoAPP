@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06736B009C343B98427CFA93 /* Pods_gsToDoAppLabExpansion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FAE0B4D33E122E83BEF516 /* Pods_gsToDoAppLabExpansion.framework */; };
 		990610CD26A2ED0100109BC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990610CC26A2ED0100109BC9 /* AppDelegate.swift */; };
 		990610CF26A2ED0100109BC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990610CE26A2ED0100109BC9 /* SceneDelegate.swift */; };
 		990610D126A2ED0100109BC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990610D026A2ED0100109BC9 /* ViewController.swift */; };
@@ -25,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		589C2B1E9E72FFE05AC01D9B /* Pods-gsToDoAppLabExpansion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gsToDoAppLabExpansion.debug.xcconfig"; path = "Target Support Files/Pods-gsToDoAppLabExpansion/Pods-gsToDoAppLabExpansion.debug.xcconfig"; sourceTree = "<group>"; };
+		66FAE0B4D33E122E83BEF516 /* Pods_gsToDoAppLabExpansion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gsToDoAppLabExpansion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		990610C926A2ED0100109BC9 /* gsToDoAppLabExpansion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gsToDoAppLabExpansion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		990610CC26A2ED0100109BC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		990610CE26A2ED0100109BC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +45,7 @@
 		990610EB26A2F98A00109BC9 /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
 		990610EE26A2FE5C00109BC9 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		990610EF26A2FE5C00109BC9 /* TaskDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskDetailViewController.xib; sourceTree = "<group>"; };
+		993542D442CC912A1E6095CB /* Pods-gsToDoAppLabExpansion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gsToDoAppLabExpansion.release.xcconfig"; path = "Target Support Files/Pods-gsToDoAppLabExpansion/Pods-gsToDoAppLabExpansion.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,17 +53,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06736B009C343B98427CFA93 /* Pods_gsToDoAppLabExpansion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37F68962C0C6B18ACA02A75C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				589C2B1E9E72FFE05AC01D9B /* Pods-gsToDoAppLabExpansion.debug.xcconfig */,
+				993542D442CC912A1E6095CB /* Pods-gsToDoAppLabExpansion.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4AD15AE08700FD035B2D4E87 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66FAE0B4D33E122E83BEF516 /* Pods_gsToDoAppLabExpansion.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		990610C026A2ED0100109BC9 = {
 			isa = PBXGroup;
 			children = (
 				990610CB26A2ED0100109BC9 /* gsToDoAppLabExpansion */,
 				990610CA26A2ED0100109BC9 /* Products */,
+				37F68962C0C6B18ACA02A75C /* Pods */,
+				4AD15AE08700FD035B2D4E87 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,9 +126,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 990610DD26A2ED0300109BC9 /* Build configuration list for PBXNativeTarget "gsToDoAppLabExpansion" */;
 			buildPhases = (
+				65D30C98CF235264413B56C2 /* [CP] Check Pods Manifest.lock */,
 				990610C526A2ED0100109BC9 /* Sources */,
 				990610C626A2ED0100109BC9 /* Frameworks */,
 				990610C726A2ED0100109BC9 /* Resources */,
+				CE5F9A7BD438176D067DFDBF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -161,6 +188,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		65D30C98CF235264413B56C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-gsToDoAppLabExpansion-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE5F9A7BD438176D067DFDBF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-gsToDoAppLabExpansion/Pods-gsToDoAppLabExpansion-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-gsToDoAppLabExpansion/Pods-gsToDoAppLabExpansion-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gsToDoAppLabExpansion/Pods-gsToDoAppLabExpansion-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		990610C526A2ED0100109BC9 /* Sources */ = {
@@ -319,6 +388,7 @@
 		};
 		990610DE26A2ED0300109BC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 589C2B1E9E72FFE05AC01D9B /* Pods-gsToDoAppLabExpansion.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -338,6 +408,7 @@
 		};
 		990610DF26A2ED0300109BC9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 993542D442CC912A1E6095CB /* Pods-gsToDoAppLabExpansion.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

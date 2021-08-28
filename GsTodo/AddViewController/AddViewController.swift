@@ -9,6 +9,7 @@
 import UIKit
 #warning("ここに PKHUD を import しよう！")
 import PKHUD
+import FirebaseFirestore
 
 class AddViewController: UIViewController {
     
@@ -17,6 +18,8 @@ class AddViewController: UIViewController {
 
     // TaskListViewControllerからコピーしたtasks
     var tasks: [Task] = []
+    //firestoreのインスタンスを作成
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,24 @@ class AddViewController: UIViewController {
         title = "Add"
         let rightButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(tapSaveButton))
         navigationItem.rightBarButtonItem = rightButtonItem
+    }
+    
+    //Firestoreに保存する関数
+    func createTaskToFirestore(_ title:String){
+        //taskに割り振るランダムな文字列を生成
+        let taskId = db.collection("Tasks").document().documentID
+        //taskIdを使って、Tasksのインスタンスを作成
+        let task = Task(taskId: taskId, title: title, memo: memoTextView.text, createdAt: Timestamp(), updatedAt: Timestamp())
+        do{
+        
+            let encodedTask:[String:Any] = try Firestore.Encoder().encode(task)
+            db.collection("Tasks").document(taskId).setData(encodedTask)
+            tasks.append(task)
+            
+        } catch let error as NSError {
+            print("エラー\(error)")
+        }
+        
     }
     
     
@@ -56,10 +77,13 @@ class AddViewController: UIViewController {
         }
 
         #warning("tasksにtaskを追加する処理")
+        self.createTaskToFirestore(title)
+            
         // tasksにAddする処理
-        let task = Task(title: title, memo: memoTextView.text)
-        tasks.append(task)
-        UserDefaultsRepository.saveToUserDefaults(tasks)
+//        let task = Task(title: title, memo: memoTextView.text)
+        //let task = Task(taskId: <#T##String#>, title: title, memo: memoTextView.text, createdAt: <#T##Timestamp#>, updatedAt: <#T##Timestamp#>)
+        //tasks.append(task)
+//        UserDefaultsRepository.saveToUserDefaults(tasks)
 
         HUD.flash(.success, delay: 0.3)
         // 前の画面に戻る

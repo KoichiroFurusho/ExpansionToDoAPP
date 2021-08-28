@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class TaskListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -15,6 +16,8 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
 
     // task情報の一覧。ここに全ての情報を保持しています！
     var tasks: [Task] = []
+    
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,11 +53,44 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewWillAppear(animated)
 
         print("👿viewWillAppearが呼ばれたよ")
+        
+        self.tasks.removeAll()
+        self.readTaskFromFirestore()
+        
         // UserDefaultsから読み出し
-        tasks = UserDefaultsRepository.loadFromUserDefaults()
+        //tasks = UserDefaultsRepository.loadFromUserDefaults()
         dump(tasks)
-        reloadTableView()
+        //reloadTableView()
     }
+    
+    func deleteTaskFromFirestore(_ indexPath:IndexPath){
+        
+        let taskId = tasks[indexPath.row].taskId
+        db.collection("Tasks").document(taskId).delete()
+        
+    }
+    
+    //Firestoreから読み込み
+    func readTaskFromFirestore(){
+        db.collection("Tasks").getDocuments { querySnapshot, err in
+            if let err = err {
+                print("エラー\(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID)) => \(document.data())")
+                    do {
+                    let decodedTask = try Firestore.Decoder().decode(Task.self, from: document.data())
+                        self.tasks.append(decodedTask)
+                    } catch let error as NSError {
+                        print("エラー：\(error)")
+                    }
+                }
+                self.reloadTableView()
+            }
+        }
+        
+    }
+    
     
     //ログイン認証されているかどうかを判定する関数
     func isLogin() -> Bool{
@@ -129,8 +165,11 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
     
     #warning("ここにスワイプして削除する時の処理を入れる")
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        self.deleteTaskFromFirestore(indexPath)
+        
         tasks.remove(at: indexPath.row)
-        UserDefaultsRepository.saveToUserDefaults(tasks)
+        //UserDefaultsRepository.saveToUserDefaults(tasks)
         reloadTableView()
     }
 
